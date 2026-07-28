@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-base text-slate-100 font-body antialiased;
+}
+
+::selection {
+  background: rgba(70, 224, 199, 0.3);
+  color: #eaf9f6;
+}
+
+.glass-card {
+  @apply border border-white/10 bg-white/5 backdrop-blur-md;
+  position: relative;
+  overflow: hidden;
+  transition: transform 220ms ease, border-color 220ms ease, box-shadow 220ms ease;
+}
+
+.glass-card::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  background: linear-gradient(115deg, rgba(70, 224, 199, 0.25), transparent 35%, rgba(255, 143, 92, 0.25));
+  opacity: 0;
+  transition: opacity 220ms ease;
+  pointer-events: none;
+}
+
+.glass-card:hover {
+  transform: translateY(-7px) scale(1.01);
+  border-color: rgba(70, 224, 199, 0.5);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+}
+
+.glass-card:hover::before {
+  opacity: 1;
+}
+
+.section-padding {
+  @apply px-4 sm:px-8 lg:px-16;
+}
+
+.gradient-text {
+  @apply bg-gradient-to-r from-brand via-teal-200 to-accent bg-clip-text text-transparent;
+}
+
+.interactive-text {
+  transition: color 180ms ease, text-shadow 180ms ease, transform 180ms ease;
+}
+
+.interactive-text:hover {
+  color: #46e0c7;
+  text-shadow: 0 0 14px rgba(70, 224, 199, 0.35);
+  transform: translateX(2px);
+}
